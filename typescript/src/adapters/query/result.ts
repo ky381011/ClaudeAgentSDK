@@ -46,9 +46,9 @@ async function main() {
     console.log(`  ${index + 1}. ${msg.type}`);
   });
 
-  console.log("\nExported functions:");
-  console.log("  - collectQueryResults(query: Query): Promise<SDKMessage[]>");
-  console.log("  - getAssistantResponse(query: Query): Promise<string | null>");
+  // console.log("\nExported functions:");
+  // console.log("  - collectQueryResults(query: Query): Promise<SDKMessage[]>");
+  // console.log("  - getAssistantResponse(query: Query): Promise<string | null>");
 }
 
 if (require.main === module) {
