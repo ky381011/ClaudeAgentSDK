@@ -8,8 +8,10 @@
 
 ## 実行方法
 ```bash
+# ディレクトリ移動
+cd typescript/src
 # 任意のパスを指定
 npx tsx <同ディレクトリからのパス>
 # 例 : 動作確認テスト
-npm tsx test/main.ts
+npx tsx test/main.ts
 ```
