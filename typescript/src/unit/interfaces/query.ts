@@ -10,4 +10,6 @@ export interface QueryUnit {
   prompt: string
   /** Unitが利用可能なツール */
   tools: Options["tools"]
+  /** ツール実行を自動許可するツール名の配列 */
+  allowedTools: Options["allowedTools"]
 }
