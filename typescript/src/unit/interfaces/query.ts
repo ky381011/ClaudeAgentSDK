@@ -9,7 +9,14 @@ export interface QueryUnit {
   /** LLMに与えるプロンプト */
   prompt: string
   /** Unitが利用可能なツール */
-  tools: Options["tools"]
+  tools?: Options["tools"]
   /** ツール実行を自動許可するツール名の配列 */
-  allowedTools: Options["allowedTools"]
+  allowedTools?: Options["allowedTools"]
+}
+
+// テスト
+const testPrompt: string = "こんにちは"
+const queryUnit: QueryUnit = {
+  name: "Test",
+  prompt: testPrompt
 }
