@@ -8,14 +8,8 @@ export interface QueryUnit {
   name: string
   /** LLMに与えるプロンプト */
   prompt: string
-  /** Unitが利用可能なツール */
-  tools?: Options["tools"]
-  /** ツール実行を自動許可するツール名の配列 */
-  allowedTools?: Options["allowedTools"]
-  /** このクエリーUnit自体のエージェントに付与される名前 */
-  agent?: Options["agent"]
-  /** このクエリーUnitが利用可能なサブエージェントの一覧 */
-  agents?: Options["agents"]
+  /** Unitのオプション設定項目 */
+  options?: Options
 }
 
 // テスト
