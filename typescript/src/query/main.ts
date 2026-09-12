@@ -1,7 +1,7 @@
 import { query } from "@anthropic-ai/claude-agent-sdk";
 import { QueryUnit } from "../unit/interfaces/query";
 
-function displayUnitName(queryName: string) {
+export function displayUnitName(queryName: string) {
   const color = "\x1b[36m" // 水色
   const reset = "\x1b[0m"
 
@@ -13,7 +13,7 @@ function displayUnitName(queryName: string) {
   console.log(`${color}${border}${reset}`)
 }
 
-async function runQuery(content: QueryUnit): Promise<string> {
+export async function runQuery(content: QueryUnit): Promise<string> {
   displayUnitName(content.name)
   
   const result = query({
@@ -32,28 +32,4 @@ async function runQuery(content: QueryUnit): Promise<string> {
   }
 
   throw new Error("Query result not found")
-}
-
-async function main() {
-  console.log(`\x1b[42m1. Unit名表示テスト\x1b[0m`)
-  console.log()
-
-  const testMessage: string = "動作テスト"
-  displayUnitName(testMessage)
-
-  console.log(`\x1b[42m2. Query実行テスト\x1b[0m`)
-  console.log()
-
-  const testQuery: QueryUnit = {
-    name: "クエリ実行テスト",
-    prompt: "こんにちは。あなたは何ができますか？",
-  }
-
-  const result = await runQuery(testQuery)
-
-  console.log(result)
-}
-
-if (require.main === module) {
-  main()
 }
