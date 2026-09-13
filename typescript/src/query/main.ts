@@ -1,16 +1,17 @@
 import { query } from "@anthropic-ai/claude-agent-sdk";
 import { QueryUnit } from "../unit/interfaces/query";
 
+import chalk from "chalk"
+import stringWidth from "string-width"
+
 export function displayUnitName(queryName: string) {
-  const color = "\x1b[36m" // 水色
-  const reset = "\x1b[0m"
+  const text = ` Query Name : ${queryName} `
+  const width = stringWidth(text)
+  const border = "═".repeat(width)
 
-  const text = `Query Name : ${queryName}`
-  const border = "=".repeat(text.length*2)
-
-  console.log(`${color}${border}${reset}`)
-  console.log(`${color}${text}${reset}`)
-  console.log(`${color}${border}${reset}`)
+  console.log(chalk.cyan(`╔${border}╗`))
+  console.log(chalk.cyan(`║${text}║`))
+  console.log(chalk.cyan(`╚${border}╝`))
 }
 
 export async function runQuery(content: QueryUnit): Promise<string> {
