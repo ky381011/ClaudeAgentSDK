@@ -16,7 +16,7 @@ export async function getSessions(limit: number = 5) {
 /**
  * セッション一覧を表示する
  */
-async function main(): Promise<void> {
+export async function displaySessions(): Promise<void> {
   const sessions = await getSessions()
 
   for (const session of sessions) {
@@ -29,7 +29,7 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((error) => {
+displaySessions().catch((error) => {
   console.error(error)
   process.exit(1)
 })
