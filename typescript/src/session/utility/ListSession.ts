@@ -15,9 +15,10 @@ export async function getSessions(limit: number = 5) {
 
 /**
  * セッション一覧を表示する
+ * @param limit 表示するセッション数（引数で指定可能）
  */
-export async function displaySessions(): Promise<void> {
-  const sessions = await getSessions()
+export async function displaySessions(limit?: number): Promise<void> {
+  const sessions = await getSessions(limit)
 
   for (const session of sessions) {
     console.log(`Session ID    : ${session.sessionId}`)
@@ -29,7 +30,9 @@ export async function displaySessions(): Promise<void> {
   }
 }
 
-displaySessions().catch((error) => {
+const limit = process.argv[2] ? parseInt(process.argv[2], 10) : undefined
+
+displaySessions(limit).catch((error) => {
   console.error(error)
   process.exit(1)
 })
