@@ -30,9 +30,11 @@ export async function displaySessions(limit?: number): Promise<void> {
   }
 }
 
-const limit = process.argv[2] ? parseInt(process.argv[2], 10) : undefined
+if (require.main === module) {
+  const limit = process.argv[2] ? parseInt(process.argv[2], 10) : undefined
 
-displaySessions(limit).catch((error) => {
-  console.error(error)
-  process.exit(1)
-})
+  displaySessions(limit).catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })
+}
