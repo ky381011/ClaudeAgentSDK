@@ -1,0 +1,8 @@
+{
+  "name": "CPP builder",
+  "build": {
+    "dockerfile": "Containerfile"
+  },
+  "workspaceMount": "source=${localWorkspaceFolder}/utility/cpp,target=/app,type=bind",
+  "workspaceFolder": "/app"
+}
