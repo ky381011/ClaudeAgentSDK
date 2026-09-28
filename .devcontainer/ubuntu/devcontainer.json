@@ -1,0 +1,7 @@
+{
+  "name": "Ubuntu Env",
+  "build": {
+    "dockerfile": "Containerfile"
+  },
+  "workspaceFolder": "/app"
+}
