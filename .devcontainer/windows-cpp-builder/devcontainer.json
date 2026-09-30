@@ -1,8 +1,0 @@
-{
-  "name": "Windows CPP builder (cross-compile)",
-  "build": {
-    "dockerfile": "Containerfile"
-  },
-  "workspaceMount": "source=${localWorkspaceFolder}/utility/cpp,target=/app,type=bind",
-  "workspaceFolder": "/app"
-}
