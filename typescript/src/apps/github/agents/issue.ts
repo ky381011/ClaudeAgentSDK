@@ -15,4 +15,5 @@ export const issueAnalysisAgent: AgentDefinition = {
 4. **追加情報**: 質問や不明確な点があれば指摘
 
 分析結果は実用的で、開発チームがすぐに対応できる形式で提示してください。`,
+	tools: ["Read", "Grep", "Bash"],
 };
