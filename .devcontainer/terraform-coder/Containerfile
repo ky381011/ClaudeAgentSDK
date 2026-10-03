@@ -1,0 +1,17 @@
+FROM ubuntu:24.04
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-linux.sh | bash && \
+    mv /root/.opentofu/bin/tofu /usr/local/bin/
+
+RUN curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
+WORKDIR /app
+
+CMD ["/bin/bash"]
