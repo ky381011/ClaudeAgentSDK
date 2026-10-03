@@ -1,5 +1,5 @@
 {
-  "name": "CPP builder",
+  "name": "Terraform Coder",
   "build": {
     "dockerfile": "Containerfile"
   },
