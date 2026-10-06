@@ -14,7 +14,7 @@ const schema = z.toJSONSchema(Result, { target: "draft-7" });
     options: {
       outputFormat: {
         type: "json_schema",
-        schema
+        schema: schema
       }
     }
   })) {
