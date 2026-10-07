@@ -87,7 +87,15 @@ async function main() {
   });
 
   for await (const message of result) {
-    console.log(message);
+    if (
+      message.type === "result" &&
+      message.subtype === "success" &&
+      message.structured_output
+    ) {
+      console.log(
+        JSON.stringify(message.structured_output, null, 2)
+      );
+    }
   }
 }
 
