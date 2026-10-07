@@ -68,8 +68,16 @@ async function main() {
     throw new Error(argsErrorMessage);
   }
   
+    const prompt = `
+      RFCクラス: ${rfcClass}
+      VPC数: ${vpcCount}
+      各VPCのSubnet数: ${subnetCounts.join(", ")}
+
+      上記の条件に従ってVPC構成を生成してください。
+    `;
+
   const result = query({
-    prompt: "",
+    prompt: prompt,
     options: {
       outputFormat: {
         type: "json_schema",
