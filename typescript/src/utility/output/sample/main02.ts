@@ -20,7 +20,7 @@ const outputFormat = z.object({
 
 const schema = z.toJSONSchema(outputFormat, { target: "draft-7" });
 
-const argsLengthErrorMessage = `
+const argsErrorMessage = `
 引数が正しくありません。
 1つ目 = A | B | C : RFCクラス
 2つ目 = 数値 : VPC数
@@ -38,17 +38,36 @@ A → RFCクラス
 async function main() {
   const args = process.argv.slice(2);
   if (args.length < 2) {
-    throw new Error(argsLengthErrorMessage);
+    throw new Error(argsErrorMessage);
   }
   const rfcClass = args[0];
+
+  if (!["A", "B", "C"].includes(rfcClass)) {
+    throw new Error(argsErrorMessage);
+  }
+
   const vpcCount = Number(args[1]);
-  const subnetCount = args
+
+  if (!Number.isInteger(vpcCount) || vpcCount <= 0) {
+    throw new Error(argsErrorMessage);
+  }
+
+  const subnetCounts = args
     .slice(2)
     .map(Number);
 
-  if (args.length !== vpcCount + 2) {
-    throw new Error(argsLengthErrorMessage);
+  if (
+    subnetCounts.some(
+      (count) => !Number.isInteger(count) || count <= 0
+    )
+  ) {
+    throw new Error(argsErrorMessage);
   }
+
+  if (subnetCounts.length !== vpcCount) {
+    throw new Error(argsErrorMessage);
+  }
+  
   const result = query({
     prompt: "",
     options: {
